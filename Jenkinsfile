@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-
-    }
-
     stages {
         // GitHub에서 코드 가져오기
         stage('Clone') {

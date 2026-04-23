@@ -25,6 +25,8 @@ function App() {
        */
       <BrowserRouter>
         <Routes>
+          {/* 기본 경로 접속 시 /login으로 리다이렉트 */}
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route element={<ProtectedRoute />}>

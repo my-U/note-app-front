@@ -22,7 +22,7 @@ export default function MemoDetailPage() {
                 {/* 헤더 */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
                     <button
-                        onClick={() => navigate("/memos")}
+                        onClick={() => navigate("/memo-list")}
                         style={{ backgroundColor: "#e5e7eb", color: "#374151", border: "none", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", fontWeight: "500", cursor: "pointer" }}
                     >
                         ← 목록으로
@@ -36,7 +36,7 @@ export default function MemoDetailPage() {
                                 수정
                             </button>
                             <button
-                                onClick={() => deleteMutate({ id: Number(id) }, { onSuccess: () => navigate("/memos") })}
+                                onClick={() => deleteMutate({ id: Number(id) }, { onSuccess: () => navigate("/memo-list") })}
                                 style={{ backgroundColor: "#fee2e2", color: "#ef4444", border: "none", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", cursor: "pointer" }}
                             >
                                 삭제

@@ -19,8 +19,14 @@ export const useAuthStore = create<AuthState>((set) => ({
     isLoggedIn: false,
     // 로그인 성공 후 토큰을 store에 저장하는 함수.
     // set({ accessToken: token }) : accessToken 상태를 받아온 token 값으로 변경
-    setAccessToken: (token) => set({accessToken: token, isLoggedIn: true}),
+    setAccessToken: (token) => {
+        localStorage.setItem("accessToken", token); // 인터셉터가 localStorage에서 토큰을 읽으므로 함께 저장
+        set({accessToken: token, isLoggedIn: true})
+    },
     // 로그아웃 시 accessToken을 다시 null로 초기화
-    logout: () => set({accessToken: null, isLoggedIn: false})
+    logout: () => {
+        localStorage.removeItem("accessToken");
+        set({accessToken: null, isLoggedIn: false})
+    }
 }))
 

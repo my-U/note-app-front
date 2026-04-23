@@ -15,7 +15,8 @@ pipeline {
                 // 빌드 컨텍스트에 .env.production 파일로 복사
                 // Vite는 npm run build 시 .env.production을 읽어 환경변수를 번들에 포함시킴
                 withCredentials([file(credentialsId: 'ENV_PRODUCTION_NOTE_FRONT', variable: 'ENV_FILE')]) {
-                    sh 'cp $ENV_FILE .env.production'
+                    // 기존 파일이 읽기 전용으로 남아있을 수 있어 먼저 삭제 후 복사
+                    sh 'rm -f .env.production && cp $ENV_FILE .env.production'
                 }
                 // Docker 이미지 빌드 (Dockerfile 기준)
                 sh 'docker build -t note-app-front .'
